@@ -6,7 +6,7 @@ double userBalance = 0;
 
 // function for storing the balance in the bank account.
 
-void checkBalance() {
+void checkBalance () {
 
     std::cout << std::endl << "My Balance : $ " << std::setprecision(2) << ::userBalance << std::fixed << std::endl << std::endl;
 
@@ -17,6 +17,7 @@ void checkBalance() {
 void depositFund () {
 
 double addFund ;
+
 std::cout << std::endl  << "Enter Amount To Deposit : \n \n" ;
 std::cin >> addFund ;
 
@@ -29,39 +30,57 @@ for(int i = 0 ; addFund < 0 ; i++){  // for loop used here for if user enters fu
 }
 
 userBalance = addFund + userBalance ;
+std::cout << std::endl << "You Deposited $" << userBalance << std::endl <<std::endl ; // display message.
 
 }
 
 // function to withdraw money from the bank account.
 
-void withdrawFund () { // have a look in this function, their are some errors.
+void withdrawFund () { 
 
 double getFund ;
-
 std::cout << "How Much Money You Want To Withdraw : " ;
 std::cin >> getFund ;
 
 
-for( int i  = 0 ; getFund > userBalance ;  i++){ 
+if(getFund > userBalance ){ // condition , if user withdraws money more than their balance.
 
-std::cout << "Insufficient Balance Or Funds Enetred Less Than 0 ! Try Again \n" ;
-std::cout << "How Much Money You Want To Withdraw : " ;
-std::cin >> getFund ;
+    for(int i = 0 ; getFund > userBalance;) {
+
+        std::cout << "Insufficient Balance ! Try Again \n" ;
+        std::cout << "How Much Money You Want To Withdraw : " ;
+        std::cin >> getFund ;
+
+    }
+    
+}
+
+if(getFund < 0 ){   // condition , if user withdraws money less than zero .]].
+
+    for(int i = 0 ; getFund < 0;) {
+
+        std::cout << "Funds Can't Be Less Than 0. Try Again! \n" ;
+        std::cout << "How Much Money You Want To Withdraw : " ;
+        std::cin >> getFund ;
+
+    }
+    
+}
 
 userBalance = userBalance - getFund ;
-}
+std::cout << std::endl << "You Have Withdrawn $" << getFund << " , You Are Left With  $" << userBalance << std::endl <<std::endl ; //dispaly messsage
 
 }
 
-// main fucntion starts from here !
+// main fucntion starts from here.
 
 int main () {
 
     int userChoice ;
 
-// do-while loop to keep executing again and again untill the user exits the program.
+// do-while loop to keep executing again and again untill the user exits the program (4).
 
-do{
+do {
 
     std::cout << "What Do You Want To Do : " << std::endl << std::endl ;
     
@@ -101,9 +120,8 @@ do{
     break;
 
     }
-}
-while(userChoice != 4) ;
+        }
+
+while ( userChoice != 4 ) ;
 
 }
-//clean the code and debug the withdraw area!
-// update the README.md 
